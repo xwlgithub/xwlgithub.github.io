@@ -4,48 +4,23 @@
   
     
     <entry>
-      <title>JAVA用法</title>
-      <link href="2020/10/16/happy/"/>
-      <url>2020/10/16/happy/</url>
+      <title>SpringCloud注册中心</title>
+      <link href="2020/10/16/springcloud-zhu-ce-zhong-xin/"/>
+      <url>2020/10/16/springcloud-zhu-ce-zhong-xin/</url>
       
-        <content type="html"><![CDATA[<p><img src="/2020/10/16/happy/1.jpg" alt="ss"></p>]]></content>
+        <content type="html"><![CDATA[<p><img src="/2020/10/16/springcloud-zhu-ce-zhong-xin/eureka.jpg"></p>]]></content>
       
       
       <categories>
           
-          <category> JAVA </category>
+          <category> 微服务 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 基础 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>JAVA基础用法</title>
-      <link href="2020/10/16/java-ce-shi/"/>
-      <url>2020/10/16/java-ce-shi/</url>
-      
-        <content type="html"><![CDATA[<h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><pre><code>toc:  enable: true  heading: h2, h3, h4  collapseDepth: 0 # 目录默认展开层级  showToggleBtn: true # 是否显示切换TOC目录展开收缩的按钮</code></pre><h2 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h2><h2 id="第三章"><a href="#第三章" class="headerlink" title="第三章"></a>第三章</h2><p>ssssssss</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> JAVA </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 基础 </tag>
+            <tag> eureka </tag>
             
         </tags>
       
