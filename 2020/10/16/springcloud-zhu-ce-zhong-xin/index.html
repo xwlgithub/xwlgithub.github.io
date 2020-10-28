@@ -445,8 +445,8 @@
 <p>注册中心节点默认时间：Eureka Server发送心跳,默认周期为30秒，如果Eureka Server在多个心跳周期内没有接收到某个节点的心跳，Eureka Server将会从服务注册表中把这个服务节点移除(默认90秒)。</p>
 <p>eureka server 优点:  通过复制的方式完成数据的同步，Eureka还提供了客户端缓存机制，即使所有的Eureka Server都挂掉，客户端依然可以利用缓存中的信息消费其他服务的API。综上，Eureka通过心跳检查、客户端缓存等机制，确保了系统的高可用性、灵活性和可伸缩性。</p>
 <h2 id="本章实例为eureka注册中心的发现"><a href="#本章实例为eureka注册中心的发现" class="headerlink" title="本章实例为eureka注册中心的发现"></a>本章实例为eureka注册中心的发现</h2><p>eureka版本：1.5<br>工具:idea<br>工程：maven<br>环境:jdk1.8</p>
-<h3 id="实例流程如下"><a href="#实例流程如下" class="headerlink" title="实例流程如下"></a>实例流程如下</h3><h4 id="建一个以maven为依赖的父项目用来管理多个子项目"><a href="#建一个以maven为依赖的父项目用来管理多个子项目" class="headerlink" title="建一个以maven为依赖的父项目用来管理多个子项目"></a>建一个以maven为依赖的父项目用来管理多个子项目</h4><p><img src="/2020/10/16/springcloud-zhu-ce-zhong-xin/one.png"><br><img src="/2020/10/16/springcloud-zhu-ce-zhong-xin/two.png"><br>然后下一个窗口:<br>Projectname表示项目名称<br>Projectlocation表示项目存储的电脑路径<br>Finish即可完成</p>
-<h4 id="新建springboot项目作为eurekaserver-注册中心"><a href="#新建springboot项目作为eurekaserver-注册中心" class="headerlink" title="新建springboot项目作为eurekaserver(注册中心)"></a>新建springboot项目作为eurekaserver(注册中心)</h4><p>在刚刚创建好的父工程名称右键：New<del>Model<br><img src="/2020/10/16/springcloud-zhu-ce-zhong-xin/three.png"><br><img src="/2020/10/16/springcloud-zhu-ce-zhong-xin/four.png"><br><img src="/2020/10/16/springcloud-zhu-ce-zhong-xin/five.png"><br><img src="/2020/10/16/springcloud-zhu-ce-zhong-xin/six.png"><br>打开作为注册中心的子工程项目<br>在resources下重命名application.properties  ~</del>改名为application.yml<br>配置如下:</p>
+<h3 id="实例流程如下"><a href="#实例流程如下" class="headerlink" title="实例流程如下"></a>实例流程如下</h3><h4 id="建一个以maven为依赖的父项目用来管理多个子项目"><a href="#建一个以maven为依赖的父项目用来管理多个子项目" class="headerlink" title="建一个以maven为依赖的父项目用来管理多个子项目"></a>建一个以maven为依赖的父项目用来管理多个子项目</h4><p><img src="/.com//one.png"><br><img src="/.com//two.png"><br>然后下一个窗口:<br>Projectname表示项目名称<br>Projectlocation表示项目存储的电脑路径<br>Finish即可完成</p>
+<h4 id="新建springboot项目作为eurekaserver-注册中心"><a href="#新建springboot项目作为eurekaserver-注册中心" class="headerlink" title="新建springboot项目作为eurekaserver(注册中心)"></a>新建springboot项目作为eurekaserver(注册中心)</h4><p>在刚刚创建好的父工程名称右键：New<del>Model<br><img src="/.com//three.png"><br><img src="/.com//four.png"><br><img src="/.com//five.png"><br><img src="/.com//six.png"><br>打开作为注册中心的子工程项目<br>在resources下重命名application.properties  ~</del>改名为application.yml<br>配置如下:</p>
 <pre><code>##端口号
 server:
   port: 8889
@@ -533,7 +533,7 @@ public class EurekaApplication {
             &lt;/plugin&gt;
         &lt;/plugins&gt;
     &lt;/build&gt;</code></pre>
-<p>启动类~~启动之后打开浏览器<br>如下所示即为成功<br><img src="/2020/10/16/springcloud-zhu-ce-zhong-xin/seven.png"></p>
+<p>启动类~~启动之后打开浏览器<br>如下所示即为成功<br><img src="/.com//seven.png"></p>
 
             </div>
             <hr/>
