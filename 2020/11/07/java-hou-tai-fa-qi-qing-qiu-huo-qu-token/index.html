@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="euerka注册中心">
+    <meta name="keywords" content="(JAVA)后台发起请求获取Token">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>SpringCloud注册中心 | 偏偏行</title>
+    <title>(JAVA)后台发起请求获取Token | 偏偏行</title>
     <link rel="icon" type="image/jpeg" href="/favicon.jpg">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -262,12 +262,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/eureka.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/getToken.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">SpringCloud注册中心</h1>
+                    <h1 class="description center-align post-title">(JAVA)后台发起请求获取Token</h1>
                 </div>
             </div>
         </div>
@@ -384,8 +384,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/eureka/">
-                                <span class="chip bg-color">eureka</span>
+                            <a href="/tags/%E6%9C%AC%E6%96%87%E5%9F%BA%E4%BA%8E%E6%9F%90%E4%BA%9B%E7%89%B9%E5%AE%9A%E8%AF%B7%E6%B1%82%E4%B8%8D%E8%B5%B0%E8%AE%A4%E8%AF%81%E7%9B%B4%E6%8E%A5%E8%8E%B7%E5%8F%96%E6%8E%A5%E5%8F%A3%E6%95%B0%E6%8D%AE%E5%B1%95%E5%BC%80/">
+                                <span class="chip bg-color">本文基于某些特定请求不走认证直接获取接口数据展开~</span>
                             </a>
                         
                     </div>
@@ -409,7 +409,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-10-16
+                    2020-11-07
                 </div>
                 
 
@@ -423,14 +423,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    891
+                    1.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    5 分
                 </div>
                 
 
@@ -440,100 +440,256 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>Eureka是Netflix开发的服务发现框架，本身是一个基于REST的服务，主要用于定位运行在AWS域中的中间层服务，以达到负载均衡和中间层服务故障转移的目的。SpringCloud将它集成在其子项目spring-cloud-netflix中，以实现SpringCloud的服务发现功能。</p>
-<p>Eureka分为两个组件：server(服务端)和client(客户端)</p>
-<p>注册中心节点默认时间：Eureka Server发送心跳,默认周期为30秒，如果Eureka Server在多个心跳周期内没有接收到某个节点的心跳，Eureka Server将会从服务注册表中把这个服务节点移除(默认90秒)。</p>
-<p>eureka server 优点:  通过复制的方式完成数据的同步，Eureka还提供了客户端缓存机制，即使所有的Eureka Server都挂掉，客户端依然可以利用缓存中的信息消费其他服务的API。综上，Eureka通过心跳检查、客户端缓存等机制，确保了系统的高可用性、灵活性和可伸缩性。</p>
-<h2 id="本章实例为eureka注册中心的发现"><a href="#本章实例为eureka注册中心的发现" class="headerlink" title="本章实例为eureka注册中心的发现"></a>本章实例为eureka注册中心的发现</h2><p>eureka版本：1.5<br>工具:idea<br>工程：maven<br>环境:jdk1.8</p>
-<h3 id="实例流程如下"><a href="#实例流程如下" class="headerlink" title="实例流程如下"></a>实例流程如下</h3><h4 id="建一个以maven为依赖的父项目用来管理多个子项目"><a href="#建一个以maven为依赖的父项目用来管理多个子项目" class="headerlink" title="建一个以maven为依赖的父项目用来管理多个子项目"></a>建一个以maven为依赖的父项目用来管理多个子项目</h4><p><img src="/2020/10/16/springcloud-zhu-ce-zhong-xin/one.png"><br><img src="/2020/10/16/springcloud-zhu-ce-zhong-xin/two.png"><br>然后下一个窗口:<br>Projectname表示项目名称<br>Projectlocation表示项目存储的电脑路径<br>Finish即可完成</p>
-<h4 id="新建springboot项目作为eurekaserver-注册中心"><a href="#新建springboot项目作为eurekaserver-注册中心" class="headerlink" title="新建springboot项目作为eurekaserver(注册中心)"></a>新建springboot项目作为eurekaserver(注册中心)</h4><p>在刚刚创建好的父工程名称右键：New<del>Model<br><img src="/2020/10/16/springcloud-zhu-ce-zhong-xin/three.png"><br><img src="/2020/10/16/springcloud-zhu-ce-zhong-xin/four.png"><br><img src="/2020/10/16/springcloud-zhu-ce-zhong-xin/five.png"><br><img src="/2020/10/16/springcloud-zhu-ce-zhong-xin/six.png"><br>打开作为注册中心的子工程项目<br>在resources下重命名application.properties  ~</del>改名为application.yml<br>配置如下:</p>
-<pre><code>##端口号
-server:
-  port: 8889
-##服务ip   
-eureka:
-  instance:
-      hostname: 127.0.0.1
-  client:
-  #表示本身不被eureka注册中心发现与注册
-    register-with-eureka: false
-    fetch-registry: false
-    #建立eureka-server注册中心的地址方便其它服务发现并注册
-    service-url:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
-##服务名称      
-spring:
-  application:
-    name: eureka-server</code></pre>
-<p>启动类如下：(idea一般都会自动生成一个启动类如果没有就新建一个)</p>
-<pre><code>package com.itxwl.eureka;
+                <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>何为Token?<br>引入:Token是在客户端频繁向服务端请求数据，服务端频繁的去数据库查询用户名和密码并进行对比，判断用户名和密码正确与否，并作出相应提示，在这样的背景下，Token便应运而生<br>定义:Token是服务端生成的一串字符串，以作客户端进行请求的一个令牌，当第一次登录后，服务器生成一个Token便将此Token返回给客户端，以后客户端只需带上这个Token前来请求数据即可，无需再次带上用户名和密码。<br>目的:减轻服务器的压力，减少频繁的查询数据库，使服务器更加健壮。</p>
+<h2 id="本章使用背景"><a href="#本章使用背景" class="headerlink" title="本章使用背景"></a>本章使用背景</h2><p>针对于某些特定接口无需走正常认证方式获取接口模式出现</p>
+<h2 id="新建Entity-实体"><a href="#新建Entity-实体" class="headerlink" title="新建Entity(实体)"></a>新建Entity(实体)</h2><h3 id="token认证返回体对应格式类"><a href="#token认证返回体对应格式类" class="headerlink" title="token认证返回体对应格式类"></a>token认证返回体对应格式类</h3><pre><code>@Data
+@NoArgsConstructor
+@SuppressWarnings("ALL")
+public class OAuthRespVo {
+    private String access_token;
+    private String token_type;
+    private String refresh_token;
+    private long   expires_in;
+    private String scope;
+    private String tenant_id;
+    private String user_name;
+    private String real_name;
+    private String avatar;
+    private String client_id;
+    private String role_name;
+    private String license;
+    private Object community_id;
+    private String user_type;
+    private String post_id;
+    private String user_id;
+    private String role_id;
+    private String nick_name;
+    private String oauth_id;
+    private String dept_id;
+    private String account;
+    private String jti;
+}</code></pre>
+<h3 id="获取Token认证需求参数接口"><a href="#获取Token认证需求参数接口" class="headerlink" title="获取Token认证需求参数接口"></a>获取Token认证需求参数接口</h3><p><strong>注意:该接口应对应你所在的环境填写,比如你实际环境只需求一个url,账号,密码,那么你就定义三个就行了</strong></p>
+<pre><code>public interface ParamApi {
+     //url
+     String oauthTokenUrl="http://localhost/blade-auth/oauth/token";
+     //其它编号
+     String tenantId="000000";
+     //账号
+     String username="admin";
+     //密码
+     String password="admin";
+     //所有
+     String scope="all";
+     //租户加密
+     String CLIENT_BASIC_CODE="Basic c3dvcmQ6c3dvcmRfc2VjcmV0";
+}</code></pre>
+<h3 id="登录-刷新-获取token类"><a href="#登录-刷新-获取token类" class="headerlink" title="登录,刷新,获取token类"></a>登录,刷新,获取token类</h3><pre><code>package org.springblade.demo.authtoken;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
-//启动类必须的注解
-@SpringBootApplication
-//表示这是一个注册中心
-@EnableEurekaServer
-public class EurekaApplication {
+import java.time.Duration;
+import org.springblade.core.http.HttpRequest;
+import org.springblade.core.http.LogLevel;
+import org.springblade.core.http.ResponseSpec;
+import org.springblade.core.tool.jackson.JsonUtil;
+import org.springblade.core.tool.utils.Base64Util;
+import org.springblade.core.tool.utils.DigestUtil;
+import org.springblade.core.tool.utils.StringUtil;
 
+/**
+ * 类的描述.
+ *
+ * @author xuewenliang
+ */
+@SuppressWarnings("all")
+public class SonliTokenHelper {
+
+    private String oauthTokenUrl;
+
+    private String tenantId;
+
+    private String clientId;
+
+    private String clientSecret;
+
+    private String username;
+
+    private String password;
+
+    private String scope;
+
+    private String accessToken;
+
+    private String refreshToken;
+
+    private Long lastRefreshTimeMilllis;
+
+    private Long expireIn;
+
+    //构造方法
+    public SonliTokenHelper(String oauthTokenUrl, String tenantId, String clientId, String clientSecret, String username,
+                            String password, String scope) {
+        this.oauthTokenUrl = oauthTokenUrl;
+        this.tenantId = tenantId;
+        this.clientId = clientId;
+        this.clientSecret = clientSecret;
+        this.username = username;
+        this.password = password;
+        this.scope = scope;
+    }
+    //登录方法
+    private boolean login() {
+        // 设定全局日志级别
+        HttpRequest.setGlobalLog(LogLevel.BASIC);
+        String HEADER_AUTHORIZATION = "Basic " + Base64Util.encode(this.clientId.concat(":").concat(this.clientSecret));
+        //String HEADER_AUTHORIZATION = "Basic c3dvcmQ6c3dvcmRfc2VjcmV0";
+        String passwordNew = DigestUtil.md5Hex(this.password);
+
+        String res = HttpRequest.post(this.oauthTokenUrl).connectTimeout(Duration.ofSeconds(2000))
+            .addHeader("Authorization", HEADER_AUTHORIZATION)
+            .addHeader("Tenant-Id", this.tenantId)
+            .addHeader("Content-Type", "application/x-www-form-urlencoded")
+            .query("grant_type", "password")
+            .query("username", this.username)
+            .query("password", passwordNew)
+            .query("scope", this.scope)
+            .query("tenantId", this.tenantId)
+            .execute()
+            .onFailed(((request, e) -&gt; {
+                e.printStackTrace();
+            }))
+            .onSuccess(ResponseSpec::asString);
+
+        OAuthRespVo parse = JsonUtil.parse(res, OAuthRespVo.class);
+        String parseJson = JsonUtil.toJson(parse);
+        System.out.println("授权完成信息"+parse);
+        System.out.println("授权完成信息(JSON)"+parseJson);
+        if(parse != null) {
+            this.accessToken = parse.getAccess_token();
+            this.refreshToken = parse.getRefresh_token();
+            this.lastRefreshTimeMilllis = System.currentTimeMillis();
+            this.expireIn = parse.getExpires_in();
+            return true;
+        }
+        return false;
+    }
+    //刷新token方法
+    private boolean refresh() {
+
+        if(StringUtil.isBlank(refreshToken)) {
+            return false;
+        }
+
+        // 设定全局日志级别
+        HttpRequest.setGlobalLog(LogLevel.BASIC);
+        String HEADER_AUTHORIZATION = "Basic " + Base64Util.encode(this.clientId.concat(":").concat(this.clientSecret));
+
+        String res = HttpRequest.post(this.oauthTokenUrl).connectTimeout(Duration.ofSeconds(2000))
+            .addHeader("Authorization", HEADER_AUTHORIZATION)
+            .addHeader("Tenant-Id", this.tenantId)
+            .addHeader("Content-Type", "application/x-www-form-urlencoded")
+            .query("grant_type", "refresh_token")
+            .query("refresh_token", this.refreshToken)
+            .query("scope", this.scope)
+            .execute()
+            .onFailed(((request, e) -&gt; {
+                e.printStackTrace();
+            }))
+            .onSuccess(ResponseSpec::asString);
+
+        OAuthRespVo parse = JsonUtil.parse(res, OAuthRespVo.class);
+
+        if(parse != null) {
+            this.accessToken = parse.getAccess_token();
+            this.refreshToken = parse.getRefresh_token();
+            this.lastRefreshTimeMilllis = System.currentTimeMillis();
+            this.expireIn = parse.getExpires_in();
+            return true;
+        }
+        return false;
+    }
+    //获取token方法
+    public String getToken() {
+        if(lastRefreshTimeMilllis == null) {
+            System.out.println("初次调用 lastRefreshDate == null");
+            boolean login = this.login();
+            if(login) {
+                System.out.println("登录成功 获得token");
+                return this.accessToken;
+            }
+            System.out.println("初次调用 登录失败");
+            return "登陆失败";
+        }
+        //判断token是否过期了 过期了的话 重新获取
+        //判断token是否过期了 过期了的话 重新获取
+        long passTime = expireIn - (System.currentTimeMillis() - lastRefreshTimeMilllis)/1000;
+
+        if(passTime &lt; 0) {
+            System.out.println("token过期了 准备调用刷新接口");
+            boolean refresh = this.refresh();
+            if(refresh) {
+                System.out.println("token过期了 刷新成功");
+                return this.accessToken;
+            }
+            boolean login = this.login();
+            if(login) {
+                System.out.println("token过期了 刷新失败 登录成功");
+                return this.accessToken;
+            }
+            System.out.println("token过期了 刷新失败 登录失败");
+            return "登陆失败";
+        }
+        //快过期了
+        if(passTime &lt; 60 * 5) {
+            System.out.println("token快过期了 调用刷新 续命");
+            this.refresh();
+        }
+
+        System.out.println("正常返回token " + passTime);
+        return this.accessToken;
+    }
+
+
+    //测试~
     public static void main(String[] args) {
-        SpringApplication.run(EurekaApplication.class, args);
+
+        // 登录接口
+        String URL = "http://localhost/blade-auth/oauth/token";
+        String TENANT_ID = "000000";
+        //这两个 需要在数据库bladex_client表配置 具体见开发环境
+        String CLIENT_ID = "sword";
+        String CLIENT_SECRET = "sword_secret";
+        // 用户名密码
+        String username = "admin";
+        String password = "admin";
+        String scope = "all";
+
+        // 项目中使用 要用bean方式交给spring容器管理 或者做个静态的类 不要每次new对象 切记
+        SonliTokenHelper sonliTokenHelper =
+            new SonliTokenHelper(URL, TENANT_ID, CLIENT_ID, CLIENT_SECRET, username, password, scope);
+
+        String needAuthUrl = "http://localhost/blade-demo/api/info";
+
+        while (true) {
+            String token = sonliTokenHelper.getToken();
+            String res = HttpRequest.get(needAuthUrl).connectTimeout(Duration.ofSeconds(2000))
+                .addHeader("blade-auth", "bearer " + token)
+                .execute()
+                .onFailed(((request, e) -&gt; {
+                    e.printStackTrace();
+                }))
+                .onSuccess(ResponseSpec::asString);
+            System.out.println("模拟带着tokenhttp请求 拿到的值" + res);
+            try {
+                Thread.sleep(3000);
+            }
+            catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 
 }</code></pre>
-<p>pom.xml核心依赖</p>
-<pre><code>&lt;parent&gt;
-        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-        &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
-        &lt;version&gt;1.5.18.RELEASE&lt;/version&gt;
-        &lt;relativePath/&gt; &lt;!-- lookup parent from repository --&gt;
-    &lt;/parent&gt;
-    &lt;groupId&gt;com.itxwl&lt;/groupId&gt;
-    &lt;artifactId&gt;eureka&lt;/artifactId&gt;
-    &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;
-    &lt;name&gt;eureka&lt;/name&gt;
-    &lt;description&gt;Demo project for Spring Boot&lt;/description&gt;
-
-    &lt;properties&gt;
-        &lt;java.version&gt;1.8&lt;/java.version&gt;
-        &lt;spring-cloud.version&gt;Edgware.SR5&lt;/spring-cloud.version&gt;
-    &lt;/properties&gt;
-    &lt;!--eureka核心依赖--&gt;
-    &lt;dependencies&gt;
-        &lt;dependency&gt;
-            &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
-            &lt;artifactId&gt;spring-cloud-starter-eureka-server&lt;/artifactId&gt;
-        &lt;/dependency&gt;
-        &lt;!--添加测试依赖--&gt;
-        &lt;dependency&gt;
-            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-            &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
-            &lt;scope&gt;test&lt;/scope&gt;
-        &lt;/dependency&gt;
-    &lt;/dependencies&gt;
-
-    &lt;dependencyManagement&gt;
-        &lt;dependencies&gt;
-            &lt;dependency&gt;
-                &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
-                &lt;artifactId&gt;spring-cloud-dependencies&lt;/artifactId&gt;
-                &lt;version&gt;${spring-cloud.version}&lt;/version&gt;
-                &lt;type&gt;pom&lt;/type&gt;
-                &lt;scope&gt;import&lt;/scope&gt;
-            &lt;/dependency&gt;
-        &lt;/dependencies&gt;
-    &lt;/dependencyManagement&gt;
-
-    &lt;build&gt;
-        &lt;plugins&gt;
-            &lt;plugin&gt;
-                &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-                &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
-            &lt;/plugin&gt;
-        &lt;/plugins&gt;
-    &lt;/build&gt;</code></pre>
-<p>启动类~~启动之后打开浏览器<br>如下所示即为成功<br><img src="/2020/10/16/springcloud-zhu-ce-zhong-xin/seven.png"></p>
 
             </div>
             <hr/>
@@ -562,8 +718,8 @@ public class EurekaApplication {
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/eureka/">
-                                    <span class="chip bg-color">eureka</span>
+                                <a href="/tags/%E6%9C%AC%E6%96%87%E5%9F%BA%E4%BA%8E%E6%9F%90%E4%BA%9B%E7%89%B9%E5%AE%9A%E8%AF%B7%E6%B1%82%E4%B8%8D%E8%B5%B0%E8%AE%A4%E8%AF%81%E7%9B%B4%E6%8E%A5%E8%8E%B7%E5%8F%96%E6%8E%A5%E5%8F%A3%E6%95%B0%E6%8D%AE%E5%B1%95%E5%BC%80/">
+                                    <span class="chip bg-color">本文基于某些特定请求不走认证直接获取接口数据展开~</span>
                                 </a>
                             
                         </div>
@@ -869,9 +1025,10 @@ public class EurekaApplication {
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/11/07/java-hou-tai-fa-qi-qing-qiu-huo-qu-token/">
                     <div class="card-image">
@@ -888,9 +1045,9 @@ public class EurekaApplication {
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-11-07
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-11-07
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -903,6 +1060,7 @@ public class EurekaApplication {
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -918,7 +1076,7 @@ public class EurekaApplication {
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
                 <a href="/2020/10/16/springcloud-zhu-ce-zhong-xin/">
@@ -951,7 +1109,6 @@ public class EurekaApplication {
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
